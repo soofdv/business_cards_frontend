@@ -15,8 +15,8 @@
 
 
 @section('content')
-    <div class="flex_sb">
-        <div class="customers_list">
+    <div class="flex_sb page_section">
+        <div class="customers_page">
             <div class="customers_text">
                 <h2>All Customers are to be seen here in a list.</h2>
 
@@ -25,11 +25,17 @@
                 </p>
             </div>
 
-            <ul>
-                <li>
-                    <a href="#">klant 1</a>
-                </li>
-            </ul>
+            <div class="customers_list">
+                <ul>
+                    <li class="customer_link">
+                        <a href="1" class="link">klant 1</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <a class="btn" href="#">Create Customers business card</a>
+            </div>
         </div>
 
         <img class="index_img" src="{{ asset('../images/team_list.png') }}" alt="">

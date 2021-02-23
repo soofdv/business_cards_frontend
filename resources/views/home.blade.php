@@ -6,7 +6,7 @@
 
 
 @section('content')
-    <div class="index_content flex_sb">
+    <div class="index_content flex_sb page_section">
         <div class="index_text">
             <h2>Laracel business card site</h2>
             <p>
