@@ -18,6 +18,8 @@
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci architecto assumenda atque cupiditate delectus deserunt dignissimos dolore doloremque, esse est exercitationem, nihil nisi officiis, provident quod rem sint unde voluptatibus!
             </p>
+
+            <p>Login to start creating business cards!</p>
         </div>
         
         <div class="index_image">
