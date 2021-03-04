@@ -27,14 +27,20 @@
 
             <div class="customers_list">
                 <ul>
-                    <li class="customer_link">
-                        <a href="1" class="link">klant 1</a>
-                    </li>
+                    {{--<li class="customer_link">
+                        <a href="" class="link"></a>
+                    </li>--}}
+
+                    @foreach($customers as $customer)
+                        <li class="customer_link">
+                            <a href="{{route('customers.show', $customer->id)}}" class="link">{{ $customer->contact_name }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
 
             <div>
-                <a class="btn" href="#">Create Customers business card</a>
+                <a class="btn" href="{{route('customers.create')}}">Create Customers business card</a>
             </div>
         </div>
 

@@ -35,6 +35,10 @@
                             <span class="label">Company Name</span>
                         </div>
                         <div class="item">
+                            <input name="company_position" type="text" class="value input_field" value="Positie in bedrijf hier">
+                            <label class="label">company_position</label>
+                        </div>
+                        <div class="item">
                             <input type="email" class="value input_field" value="email@mail.nl">
                             <span class="label">E-mail</span>
                         </div>

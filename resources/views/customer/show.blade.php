@@ -22,20 +22,20 @@
                 <img class="customer_img" src="{{ asset('../images/female_avatar.png') }}" alt="">
             </div>
             <div class="card_details">
-                <div class="name">Name person</div>
-                <div class="occupation">Position in company</div>
+                <div class="name">{{$customer->contact_name}}</div>
+                <div class="occupation">{{$customer->company_position}}</div>
 
                 <div class="card_about">
                     <div class="item">
-                        <span class="value">Company here</span>
+                        <span class="value">{{$customer->company_name}}</span>
                         <span class="label">Company Name</span>
                     </div>
                     <div class="item">
-                        <span class="value">email@mail.nl</span>
+                        <span class="value">{{$customer->email}}</span>
                         <span class="label">E-mail</span>
                     </div>
                     <div class="item">
-                        <span class="value">+31 6 2345678 </span>
+                        <span class="value">{{$customer->phone}}</span>
                         <span class="label">Phone Number</span>
                     </div>
                 </div>
