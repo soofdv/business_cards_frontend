@@ -1,5 +1,8 @@
 /* GENERAL STYLING */
 /* #95C4A2 */
+body {
+    background-color: white;
+}
 .container {
     width: 75%;
     margin: 0 auto;
