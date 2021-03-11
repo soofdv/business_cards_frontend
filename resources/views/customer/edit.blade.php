@@ -17,7 +17,10 @@
 @section('content')
     <div class="page_section">
         <h2>Edit page, Customer</h2>
-        <form action="" method="">
+        <form action="{{route('customers.update', $customer->id)}}" method="post">
+            @csrf
+            @method('put')
+
             <div class="card">
                 <div class="card_avatar">
                     <span>
@@ -26,29 +29,56 @@
                     </span>
                 </div>
                 <div class="card_details card_form">
-                    <input name="name_customer" type="text" class="name input_field" value="Name person">
+                    @error('contact_name')
+                    <p class="alert alert-danger">
+                        {{$message}}
+                    </p>
+                    @enderror
+                    <input name="contact_name" type="text" class="name input_field" value="{{$customer->contact_name}}">
                     <div class="occupation">Position in company</div>
 
                     <div class="card_about">
                         <div class="item">
-                            <input type="text" class="value input_field" value="Bedrijfsnaam hier">
+                            @error('company_name')
+                            <p class="alert alert-danger">
+                                {{$message}}
+                            </p>
+                            @enderror
+                            <input name="company_name" type="text" class="value input_field"
+                                   value="{{$customer->company_name}}">
                             <span class="label">Company Name</span>
                         </div>
                         <div class="item">
-                            <input name="company_position" type="text" class="value input_field" value="Positie in bedrijf hier">
+                            @error('company_position')
+                            <p class="alert alert-danger">
+                                {{$message}}
+                            </p>
+                            @enderror
+                            <input name="company_position" type="text" class="value input_field"
+                                   value="{{$customer->company_position}}">
                             <label class="label">company_position</label>
                         </div>
                         <div class="item">
-                            <input type="email" class="value input_field" value="email@mail.nl">
+                            @error('email')
+                            <p class="alert alert-danger">
+                                {{$message}}
+                            </p>
+                            @enderror
+                            <input name="email" type="email" class="value input_field" value="{{$customer->email}}">
                             <span class="label">E-mail</span>
                         </div>
                         <div class="item">
-                            <input type="tel" class="value input_field" value="+31 6 2345678">
+                            @error('phone')
+                            <p class="alert alert-danger">
+                                {{$message}}
+                            </p>
+                            @enderror
+                            <input name="phone" type="tel" class="value input_field" value="{{$customer->phone}}">
                             <span class="label">Phone Number</span>
                         </div>
                     </div>
                     <div class="item buttons_from">
-                        <a href="#" class="btn card_btn-edit confirm_btn">Confirm</a>
+                        <input type="submit" class="btn card_btn-edit confirm_btn" value="Confirm">
                         <a class="btn del_btn" href="#">Delete</a>
                     </div>
                 </div>

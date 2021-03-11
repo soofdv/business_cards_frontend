@@ -15,6 +15,9 @@ body {
     justify-content: space-between;
 }
 
+.page_img {
+    height: min-content;
+}
 .fl_row-rev {
     flex-direction: row-reverse;
 }
@@ -227,6 +230,8 @@ body {
     font-size: 0.75rem;
     transition: 0.5s;
     padding: 0.375rem 0.45rem;
+    border: none;
+    background-color: transparent;
 }
 
 #card_btn-del:hover {

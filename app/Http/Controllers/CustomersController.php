@@ -20,7 +20,7 @@ class CustomersController extends Controller
          * doet evt iets in database
          * return view
          */
-        $customers = Customer::all();
+        $customers = Customer::paginate(15);
         return view('customer.index', [
             'customers' => $customers
         ]);
@@ -62,7 +62,7 @@ class CustomersController extends Controller
             'phone'                 => $request->phone
         ]);
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.show', $customer->id);
     }
 
     /**
@@ -74,7 +74,7 @@ class CustomersController extends Controller
     public function show($id)
     {
         //
-        $customer = Customer::find($id);
+        $customer = Customer::findOrFail($id);
         return view('customer.show', [
             'customer' => $customer
         ]);
@@ -88,10 +88,11 @@ class CustomersController extends Controller
      */
     public function edit($id)
     {
-        //
-        //return 'dit is een customer edit page';
+        $customer = Customer::FindOrFail($id); //sql:select * FROM customers wehre 'id' =$id
 
-        return view('customer.edit');
+        return view('customer.edit', [
+            'customer' => $customer,
+        ]);
     }
 
     /**
@@ -103,7 +104,28 @@ class CustomersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $customer = Customer::FindOrFail($id);
+
+        $request->validate([
+            'contact_name'          => 'required',
+            'company_name'          => 'required',
+            'company_position'      => ['required', 'different:company_name'],
+            'email'                 => 'required',
+            'phone'                 => 'required'
+        ]);
+
+        $customer->update([
+            'profile_picture'       => $request->profile_picture,
+            'contact_name'          => $request->contact_name,
+            'company_name'          => $request->company_name,
+            'company_position'      => $request->company_position,
+            'email'                 => $request->email,
+            'phone'                 => $request->phone
+        ]);
+
+        return redirect()
+            ->route('customers.show' , $id)
+            ->with('update', 'Customer updated successfully!');
     }
 
     /**
@@ -114,6 +136,9 @@ class CustomersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Customer::destroy($id);
+        return redirect()
+            ->route('customers.index')
+            ->with('status', 'Card deleted succesfully!');
     }
 }

@@ -40,9 +40,14 @@
                     </div>
                 </div>
                 <div class="item buttons">
-                    <a class="btn" id="card_btn-edit" href="#">Edit Business card</a>
-                    <a class="link" id="card_btn-del" href="#">Delete Business card</a>
+                    <a class="btn" id="card_btn-edit" href="{{route('customers.edit', $customer->id)}}">Edit Business card</a>
+                    <form action="{{route('customers.destroy', $customer->id)}}" method="post">
+                        @method('delete')
+                        @csrf
+                        <input class="link" id="card_btn-del" type="submit" value="Delete business card" >
+                    </form>
                 </div>
+
             </div>
         </div>
     </div>

@@ -51,6 +51,7 @@
 
     <section class="content">
         <div class="container">
+            @include('partials.status')
             @yield('content')
         </div>
     </section>
