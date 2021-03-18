@@ -79,11 +79,16 @@
                     </div>
                     <div class="item buttons_from">
                         <input type="submit" class="btn card_btn-edit confirm_btn" value="Confirm">
-                        <a class="btn del_btn" href="#">Delete</a>
-                    </div>
+                 </form>
+
+                    <form action="{{route('customers.destroy', $customer->id)}}" method="post">
+                        @method('delete')
+                        @csrf
+                        <input class="link" id="card_btn-del" type="submit" value="Delete business card">
+                    </form>
                 </div>
             </div>
-        </form>
+        </div>
 
     </div>
 @endsection

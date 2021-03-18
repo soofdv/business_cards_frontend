@@ -20,6 +20,7 @@ class CustomersController extends Controller
          * doet evt iets in database
          * return view
          */
+        
         $customers = Customer::paginate(15);
         return view('customer.index', [
             'customers' => $customers

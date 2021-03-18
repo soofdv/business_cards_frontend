@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use \App\Http\Controllers\PagesController;
 use \App\Http\Controllers\CustomersController;
+use \App\Http\Controllers\AppointmentsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +32,4 @@ Route::get('/contact', [
 ])->name('contact');
 
 route::resource('customers', CustomersController::class);
+route::resource('appointments', AppointmentsController::class);

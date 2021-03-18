@@ -40,15 +40,48 @@
                     </div>
                 </div>
                 <div class="item buttons">
-                    <a class="btn" id="card_btn-edit" href="{{route('customers.edit', $customer->id)}}">Edit Business card</a>
+                    <a class="btn" id="card_btn-edit" href="{{route('customers.edit', $customer->id)}}">Edit Business
+                        card</a>
                     <form action="{{route('customers.destroy', $customer->id)}}" method="post">
                         @method('delete')
                         @csrf
-                        <input class="link" id="card_btn-del" type="submit" value="Delete business card" >
+                        <input class="link" id="card_btn-del" type="submit" value="Delete business card">
                     </form>
                 </div>
-
             </div>
+        </div>
+
+        <div class="appointments">
+            <a class="btn" href="{{route('appointments.create')}}">Make appointment</a>
+            <h3>Appointments</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>Datum</th>
+                    <th>
+                        Titel
+                    </th>
+                    <th>Plaats</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>04-04-2021 - 15:00</td>
+                    <td><a href="">Kennismaking </a></td>
+                    <td> Bij klant op locatie</td>
+                </tr>
+                <tr>
+                    <td>04-04-2021 - 15:00</td>
+                    <td><a href="">Kennismaking </a></td>
+                    <td> Bij klant op locatie</td>
+                </tr>
+                <tr>
+                    <td>04-04-2021 - 15:00</td>
+                    <td><a href="">Kennismaking </a></td>
+                    <td> Bij klant op locatie</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection
