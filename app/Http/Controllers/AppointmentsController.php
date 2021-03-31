@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Models\Appointment;
 
 class AppointmentsController extends Controller
 {
@@ -21,10 +23,12 @@ class AppointmentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
-        return view('appointments.create');
+        $customer = Customer::findOrFail($id);
+        return view('appointments.create', [
+            'customer'
+        ]);
     }
 
     /**
@@ -35,7 +39,15 @@ class AppointmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = Auth::user()->id;
+
+        $blog = Blog::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'author_id' => $author,
+        ]);
+
+        return redirect()->route('blogs.show', $blog->id);
     }
 
     /**
@@ -46,7 +58,10 @@ class AppointmentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $appointment = Appointment::findOrFail($id);
+        return view('appointments.show', [
+            'appointment' => $appointment
+            ]);
     }
 
     /**

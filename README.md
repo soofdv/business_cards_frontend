@@ -13,3 +13,5 @@ To get the data working you need to create a database called 'business_cards'.
 Then after that you can do 'php artisan migrate'.
 
 To get test data you can do 'php artisan db: seed'.
+
+To make the picture upload work you need to run the command 'php artisan storage:link'

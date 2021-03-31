@@ -51,11 +51,16 @@ class CustomersController extends Controller
             'company_name'          => 'required',
             'company_position'      => ['required', 'different:company_name'],
             'email'                 => 'required',
-            'phone'                 => 'required'
+            'phone'                 => 'required',
+            'profile_picture'       => 'image',
         ]);
 
+        if ($request->profile_picture){
+            $img_path = $request->profile_picture->store('public/pictures');
+        }
+
         $customer = Customer::create([
-            'profile_picture'       => $request->profile_picture,
+            'profile_picture'       => substr($img_path, strlen('public')) ?? null,
             'contact_name'          => $request->contact_name,
             'company_name'          => $request->company_name,
             'company_position'      => $request->company_position,

@@ -19,7 +19,11 @@
         <h2>Detail page, Customer</h2>
         <div class="card">
             <div class="card_avatar">
-                <img class="customer_img" src="{{ asset('../images/female_avatar.png') }}" alt="">
+                @if ($customer->profile_picture === null)
+                    <img class="customer_img" src="{{ asset('../images/female_avatar.png') }}" alt="">
+                @else
+                    <img class="customer_img" src="{{ asset('storage/' . $customer->profile_picture) }}" alt="">
+                @endif
             </div>
             <div class="card_details">
                 <div class="name">{{$customer->contact_name}}</div>
@@ -52,7 +56,7 @@
         </div>
 
         <div class="appointments">
-            <a class="btn" href="{{route('appointments.create')}}">Make appointment</a>
+            <a class="btn" href="{{route('appointments.create', $customer->id )}}">Make appointment</a>
             <h3>Appointments</h3>
             <table>
                 <thead>
@@ -65,21 +69,23 @@
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($customer->appointments as $appointment)
                 <tr>
-                    <td>04-04-2021 - 15:00</td>
-                    <td><a href="">Kennismaking </a></td>
-                    <td> Bij klant op locatie</td>
+                    <td>{{ $appointment->appointment_date }}</td>
+                    <td><a href="{{ route('appointments.show', $appointment->id) }}">{{ $appointment->title }} </a></td>
+                    <td>{{ $appointment->location }}</td>
                 </tr>
-                <tr>
-                    <td>04-04-2021 - 15:00</td>
-                    <td><a href="">Kennismaking </a></td>
-                    <td> Bij klant op locatie</td>
-                </tr>
-                <tr>
-                    <td>04-04-2021 - 15:00</td>
-                    <td><a href="">Kennismaking </a></td>
-                    <td> Bij klant op locatie</td>
-                </tr>
+                @endforeach
+                {{--<tr>--}}
+                    {{--<td>04-04-2021 - 15:00</td>--}}
+                    {{--<td><a href="">Kennismaking </a></td>--}}
+                    {{--<td> Bij klant op locatie</td>--}}
+                {{--</tr>--}}
+                {{--<tr>--}}
+                    {{--<td>04-04-2021 - 15:00</td>--}}
+                    {{--<td><a href="">Kennismaking </a></td>--}}
+                    {{--<td> Bij klant op locatie</td>--}}
+                {{--</tr>--}}
                 </tbody>
             </table>
         </div>

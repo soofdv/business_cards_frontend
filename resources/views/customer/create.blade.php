@@ -16,7 +16,7 @@
 @section('content')
     <div class="page_section">
         <h2>Create page, Customer</h2>
-        <form action="{{route('customers.store')}}" method="POST">
+        <form enctype="multipart/form-data" action="{{route('customers.store')}}" method="POST">
             @csrf
             <div class="card">
                 <div class="card_avatar">
