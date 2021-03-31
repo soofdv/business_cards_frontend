@@ -6,7 +6,7 @@
 @section('content')
     <div class="page_section">
         <h1>Create an appointment</h1>
-
+        {{--<p>{{ $customer->id }}</p>--}}
         <form action="" method="" style="width: 50%; margin: 0 auto;">
             @csrf
             <div class="mb-6 d-flex flex-column">
@@ -20,13 +20,18 @@
             </div>
 
             <div class="mb-6 d-flex flex-column">
-                <label for="involved" class="form-label">Who are involved</label>
-                <input name="involved" type="text" class="form-control">
+                <label for="attendees" class="form-label">Who are involved</label>
+                <input name="attendees" type="text" class="form-control">
             </div>
 
-            <div class="mb-6 d-flex flex-column form-check">
-                <label class="form-label" for="date">Date of appointment</label>
-                <input name="datetime" type="date" class="form-control">
+            <div class="mb-6 d-flex flex-column">
+                <label for="location" class="form-label">Where are we meeting?</label>
+                <input name="location" type="text" class="form-control">
+            </div>
+
+            <div class="mb-6 d-flex flex-column">
+                <label class="form-label" for="appointment_date">Date of appointment</label>
+                <input name="appointment_date" type="date" class="form-control">
             </div>
             <button type="submit" class="btn">Submit</button>
         </form>

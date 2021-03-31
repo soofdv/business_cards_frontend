@@ -56,7 +56,7 @@
         </div>
 
         <div class="appointments">
-            <a class="btn" href="{{route('appointments.create', $customer->id )}}">Make appointment</a>
+            <a class="btn" href="{{route('appointments.create')}}">Make appointment</a>
             <h3>Appointments</h3>
             <table>
                 <thead>
