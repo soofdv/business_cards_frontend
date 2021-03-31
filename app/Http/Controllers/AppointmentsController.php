@@ -25,10 +25,7 @@ class AppointmentsController extends Controller
      */
     public function create($id)
     {
-        $customer = Customer::findOrFail($id);
-        return view('appointments.create', [
-            'customer'
-        ]);
+        return view('appointments.create');
     }
 
     /**
@@ -39,15 +36,7 @@ class AppointmentsController extends Controller
      */
     public function store(Request $request)
     {
-        $customer = Auth::user()->id;
 
-        $blog = Blog::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'author_id' => $author,
-        ]);
-
-        return redirect()->route('blogs.show', $blog->id);
     }
 
     /**
