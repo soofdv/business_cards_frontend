@@ -25,7 +25,10 @@ class AppointmentsController extends Controller
      */
     public function create($id)
     {
-        return view('appointments.create');
+        $customer = Customer::findOrFail($id);
+        return view('appointments.create', [
+            'customer' => $customer
+        ]);
     }
 
     /**
@@ -36,8 +39,28 @@ class AppointmentsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate( $request ,[
+            'title'             => 'required',
+            'appointment_date'  => 'required',
+            'description'       => 'required',
+            'customer_id'       => 'required',
+        ]);
+
+
+        $appointment = Appointment::create($request->except(['_token']));
+
+        return redirect()->route('appointments.show', $appointment->id);
+
+        /*
+         * Dit returned de show pagina van de customers,
+         *  dit kan je uit commentaar halen
+         * en dan de regel hierboven in commentaar zetten
+         * 
+         */
+        return redirect()->route('customers.show', $request->customer_id);
 
     }
+
 
     /**
      * Display the specified resource.

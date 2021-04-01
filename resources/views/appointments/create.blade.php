@@ -5,13 +5,16 @@
 
 @section('content')
     <div class="page_section">
-        <h1>Create an appointment</h1>
-        {{--<p>{{ $customer->id }}</p>--}}
-        <form action="" method="" style="width: 50%; margin: 0 auto;">
+        <h1>Create an appointment for {{ $customer->contact_name }}</h1>
+
+        <form action="{{route('appointments.store')}}" method="post" style="width: 50%; margin: 0 auto;">
             @csrf
+
+            <input type="hidden" name="customer_id" value="{{$customer->id}}">
+
             <div class="mb-6 d-flex flex-column">
                 <label for="title" class="form-label">Title of appointment</label>
-                <input name="title" type="email" class="form-control">
+                <input name="title" type="text" class="form-control">
             </div>
 
             <div class="mb-6 d-flex flex-column">
@@ -31,7 +34,7 @@
 
             <div class="mb-6 d-flex flex-column">
                 <label class="form-label" for="appointment_date">Date of appointment</label>
-                <input name="appointment_date" type="date" class="form-control">
+                <input name="appointment_date" type="datetime-local" class="form-control">
             </div>
             <button type="submit" class="btn">Submit</button>
         </form>

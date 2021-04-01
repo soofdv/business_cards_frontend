@@ -33,3 +33,8 @@ Route::get('/contact', [
 
 route::resource('customers', CustomersController::class);
 route::resource('appointments', AppointmentsController::class);
+
+route::get('appointments/{customer}/create', [
+    AppointmentsController::class,
+    'create'
+])->name('appointments.createFromCustomer');

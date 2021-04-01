@@ -56,7 +56,7 @@
         </div>
 
         <div class="appointments">
-            <a class="btn" href="{{route('appointments.create')}}">Make appointment</a>
+            <a class="btn" href="{{route('appointments.createFromCustomer', $customer->id)}}">Make appointment</a>
             <h3>Appointments</h3>
             <table>
                 <thead>
@@ -69,23 +69,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($customer->appointments as $appointment)
+                @forelse($customer->appointments as $appointment)
                 <tr>
                     <td>{{ $appointment->appointment_date }}</td>
                     <td><a href="{{ route('appointments.show', $appointment->id) }}">{{ $appointment->title }} </a></td>
                     <td>{{ $appointment->location }}</td>
                 </tr>
-                @endforeach
-                {{--<tr>--}}
-                    {{--<td>04-04-2021 - 15:00</td>--}}
-                    {{--<td><a href="">Kennismaking </a></td>--}}
-                    {{--<td> Bij klant op locatie</td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                    {{--<td>04-04-2021 - 15:00</td>--}}
-                    {{--<td><a href="">Kennismaking </a></td>--}}
-                    {{--<td> Bij klant op locatie</td>--}}
-                {{--</tr>--}}
+                    @empty
+                    <tr>
+                        <td colspan="3">Er zijn geen afsrpaken gemaakt met deze customer</td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
         </div>
